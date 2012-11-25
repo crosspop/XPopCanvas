@@ -12,12 +12,14 @@ package
 	import xpop.canvas.tool.Tools;
 	import xpop.canvas.ui.DrawableSpace;
 	import xpop.canvas.ui.UISpace;
+	import xpop.canvas.ui.window.Windows;
 	
 	[ SWF( width="640", height="480", frameRate="60" ) ]
 	public class XPopCanvas extends Sprite
 	{
-		private var config:Config;
-		private var tools:Tools;
+		public var config:Config;
+		public var tools:Tools;
+		public var windows:Windows;
 		private var drawableSpace:DrawableSpace;
 		private var uiSpace:UISpace;
 		public function XPopCanvas()
@@ -34,12 +36,14 @@ package
 		{
 			config = new Config;
 			tools = new Tools;
+			windows = new Windows;
 			drawableSpace = new DrawableSpace;
 			uiSpace = new UISpace;
 			addChild( drawableSpace );
 			addChild( uiSpace );
 			config.init( this );
 			tools.init( config );
+			windows.init( config );
 			drawableSpace.init( config );
 			uiSpace.init( config );
 		}

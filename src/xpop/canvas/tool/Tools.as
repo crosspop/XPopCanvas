@@ -14,7 +14,7 @@ package xpop.canvas.tool
 			_config = config;
 			brushTool = new BrushTool;
 			brushTool.init( _config );
-			_config.tool = brushTool;
+			_config.currentTool = brushTool;
 		}
 	}
 }

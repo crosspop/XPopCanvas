@@ -10,21 +10,21 @@ package xpop.canvas
 
 	public class Config
 	{
-		private var _app:XPopCanvas;
+		public var app:XPopCanvas;
 		public function get stage():Stage
 		{
-			return _app.stage;
+			return app.stage;
 		}
 		public function get mouseX():Number
 		{
-			return _app.stage.mouseX;
+			return app.stage.mouseX;
 		}
 		public function get mouseY():Number
 		{
-			return _app.stage.mouseY;
+			return app.stage.mouseY;
 		}
 		public var canvas:Bitmap;
-		public var tool:ITool;
+		public var currentTool:ITool;
 		public var brushThickness:Number;
 		public var brushColor:uint;
 		public var eraserThickness:Number;
@@ -34,7 +34,7 @@ package xpop.canvas
 		}
 		public function init( app:XPopCanvas ):void
 		{
-			_app = app;
+			this.app = app;
 			canvas = new Bitmap( new BitmapData( 300, 300, false ) );
 			brushThickness = 5;
 			brushColor = 0x000000;

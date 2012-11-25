@@ -29,19 +29,19 @@ package xpop.canvas.ui
 		}
 		private function MOUSE_DOWN( e:MouseEvent ):void
 		{
-			_config.tool.onMouseDown();
+			_config.currentTool.onMouseDown();
 			stage.addEventListener( MouseEvent.MOUSE_MOVE, MOUSE_MOVE );
 			stage.addEventListener( MouseEvent.MOUSE_UP, MOUSE_UP );
 		}
 		private function MOUSE_UP( e:MouseEvent ):void
 		{
-			_config.tool.onMouseUp();
+			_config.currentTool.onMouseUp();
 			stage.removeEventListener( MouseEvent.MOUSE_MOVE, MOUSE_MOVE );
 			stage.removeEventListener( MouseEvent.MOUSE_UP, MOUSE_UP );
 		}
 		private function MOUSE_MOVE( e:MouseEvent ):void
 		{
-			_config.tool.onMouseMove();
+			_config.currentTool.onMouseMove();
 		}
 	}
 }
