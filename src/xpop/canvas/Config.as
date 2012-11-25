@@ -7,10 +7,12 @@ package xpop.canvas
 	
 	import xpop.canvas.tool.BrushTool;
 	import xpop.canvas.tool.ITool;
+	import xpop.canvas.ui.window.Windows;
 
 	public class Config
 	{
 		public var app:XPopCanvas;
+		public var windows:Windows;
 		public function get stage():Stage
 		{
 			return app.stage;
