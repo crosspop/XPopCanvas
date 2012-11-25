@@ -3,15 +3,19 @@ package xpop.canvas.ui
 	import flash.display.Sprite;
 	import flash.events.Event;
 	
+	import xpop.canvas.Config;
+	
 	public class Background extends Sprite
 	{
+		private var _config:Config;
 		public function Background()
 		{
 		}
-		public function init():void
+		public function init( config:Config ):void
 		{
+			_config = config;
 			render();
-			stage.addEventListener( Event.RESIZE, RESIZE );
+			_config.stage.addEventListener( Event.RESIZE, RESIZE );
 		}
 		protected function render():void
 		{

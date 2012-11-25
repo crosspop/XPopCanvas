@@ -8,29 +8,22 @@ package xpop.canvas.tool
 	
 	public class BrushTool extends Sprite implements ITool
 	{
-		private static var instance:BrushTool = new BrushTool;
+		private var _config:Config;
 		private var brush:Shape;
 		private var prevX:Number;
 		private var prevY:Number;
 		public function BrushTool()
 		{
-			if( instance != null )
-				throw new Error( "싱글턴임" );
-			else
-				init();
 		}
-		public static function getInstance():BrushTool
+		public function init( config:Config ):void
 		{
-			return instance;
-		}
-		public function init():void
-		{
+			_config = config;
 			brush = new Shape;
 		}
 		public function onMouseDown():void
 		{
-			brush.graphics.lineStyle( Config.brushThickness, Config.brushColor );
-			brush.graphics.moveTo( prevX = Config.mouseX, prevY = Config.mouseY );
+			brush.graphics.lineStyle( _config.brushThickness, _config.brushColor );
+			brush.graphics.moveTo( prevX = _config.mouseX, prevY = _config.mouseY );
 		}
 		public function onMouseUp():void
 		{
@@ -39,15 +32,12 @@ package xpop.canvas.tool
 		public function onMouseMove():void
 		{
 			brush.graphics.clear();
-			if( Config.enableTabletPressure )
-				brush.graphics.lineStyle( Config.brushThickness * Config.tabletPressure, Config.brushColor );
-			else
-				brush.graphics.lineStyle( Config.brushThickness, Config.brushColor );
+			brush.graphics.lineStyle( _config.brushThickness, _config.brushColor );
 			brush.graphics.moveTo( prevX, prevY );
-			brush.graphics.lineTo( prevX = Config.mouseX, prevY = Config.mouseY );
-			var matrix:Matrix = Config.canvas.transform.matrix;
+			brush.graphics.lineTo( prevX = _config.mouseX, prevY = _config.mouseY );
+			var matrix:Matrix = _config.canvas.transform.matrix;
 			matrix.invert();
-			Config.canvas.bitmapData.draw( brush, matrix );
+			_config.canvas.bitmapData.draw( brush, matrix );
 		}
 	}
 }

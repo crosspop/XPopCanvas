@@ -1,31 +1,47 @@
 package
 {
+	import alternativa.gui.layout.LayoutManager;
+	import alternativa.init.GUI;
+	
 	import flash.display.Sprite;
 	import flash.display.StageAlign;
 	import flash.display.StageScaleMode;
-	import flash.events.MouseEvent;
-	import flash.external.ExternalInterface;
+	import flash.ui.ContextMenu;
 	
 	import xpop.canvas.Config;
+	import xpop.canvas.tool.Tools;
 	import xpop.canvas.ui.DrawableSpace;
+	import xpop.canvas.ui.UISpace;
 	
+	[ SWF( width="640", height="480", frameRate="60" ) ]
 	public class XPopCanvas extends Sprite
 	{
+		private var config:Config;
+		private var tools:Tools;
 		private var drawableSpace:DrawableSpace;
-		//private var menuBar;
-		//private var toolBox;
+		private var uiSpace:UISpace;
 		public function XPopCanvas()
 		{
+			GUI.init( stage, false );
+			LayoutManager.init( stage, [ this ] );
+			contextMenu = new ContextMenu;
+			contextMenu.hideBuiltInItems();
+			stage.scaleMode = StageScaleMode.NO_SCALE;
+			stage.align = StageAlign.TOP_LEFT;
 			init();
 		}
 		public function init():void
 		{
-			Config.stage = stage;
-			stage.scaleMode = StageScaleMode.NO_SCALE;
-			stage.align = StageAlign.TOP_LEFT;
+			config = new Config;
+			tools = new Tools;
 			drawableSpace = new DrawableSpace;
+			uiSpace = new UISpace;
 			addChild( drawableSpace );
-			drawableSpace.init();
+			addChild( uiSpace );
+			config.init( this );
+			tools.init( config );
+			drawableSpace.init( config );
+			uiSpace.init( config );
 		}
 	}
 }

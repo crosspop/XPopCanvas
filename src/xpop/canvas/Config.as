@@ -10,29 +10,36 @@ package xpop.canvas
 
 	public class Config
 	{
-		public static var stage:Stage;
-		public static function get mouseX():Number
+		private var _app:XPopCanvas;
+		public function get stage():Stage
 		{
-			return stage.mouseX;
+			return _app.stage;
 		}
-		public static function get mouseY():Number
+		public function get mouseX():Number
 		{
-			return stage.mouseY;
+			return _app.stage.mouseX;
 		}
-		public static function get tabletPressure():Number
+		public function get mouseY():Number
 		{
-			return Number( ExternalInterface.call( "tabletPressure" ) );
+			return _app.stage.mouseY;
 		}
-		public static function get isEraser():Boolean
+		public var canvas:Bitmap;
+		public var tool:ITool;
+		public var brushThickness:Number;
+		public var brushColor:uint;
+		public var eraserThickness:Number;
+		public var eraserColor:uint;
+		public function Config()
 		{
-			return Boolean( ExternalInterface.call( "isEraser" ) );
 		}
-		public static var canvas:Bitmap = new Bitmap( new BitmapData( 300, 300, false ) );
-		public static var tool:ITool = BrushTool.getInstance();
-		public static var brushThickness:Number = 10;
-		public static var brushColor:uint = 0x000000;
-		public static var eraserThickness:Number = 20;
-		public static var eraserColor:uint = 0xFFFFFF;
-		public static var enableTabletPressure:Boolean = true;
+		public function init( app:XPopCanvas ):void
+		{
+			_app = app;
+			canvas = new Bitmap( new BitmapData( 300, 300, false ) );
+			brushThickness = 5;
+			brushColor = 0x000000;
+			eraserThickness = 10;
+			eraserColor = 0xFFFFFF;
+		}
 	}
 }
