@@ -46,6 +46,8 @@ package
 		}
 		public function openWindow( window:Panel ):void
 		{
+			window.x = stage.stageWidth / 2 - window.width / 2;
+			window.y = stage.stageHeight / 2 - window.height / 2;
 			if( uiSpace.contains( window ) != true )
 				uiSpace.addChild( window );
 		}
