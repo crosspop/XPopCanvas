@@ -6,6 +6,7 @@ package xpop.canvas.ui.window
 	{
 		private var _config:Config;
 		public var toolBoxWindow:ToolBoxWindow;
+		public var aboutWindow:AboutWindow;
 		public function Windows()
 		{
 		}
@@ -14,6 +15,8 @@ package xpop.canvas.ui.window
 			_config = config;
 			toolBoxWindow = new ToolBoxWindow;
 			toolBoxWindow.init( _config );
+			aboutWindow = new AboutWindow;
+			aboutWindow.init( _config );
 		}
 	}
 }

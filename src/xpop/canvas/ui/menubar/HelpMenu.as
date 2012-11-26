@@ -13,6 +13,10 @@ package xpop.canvas.ui.menubar
 		public function init( config:Config ):void
 		{
 			_config = config;
+			addItem( { label:"About XPopCanvas", onSelect:function():void
+			{
+				_config.app.openWindow( _config.windows.aboutWindow );
+			} } );
 		}
 	}
 }
