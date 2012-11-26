@@ -7,6 +7,7 @@ package xpop.canvas.tool
 		private var _config:Config;
 		public var brushTool:BrushTool;
 		public var eraserTool:EraserTool;
+		public var handTool:HandTool;
 		public function Tools()
 		{
 		}
@@ -17,6 +18,8 @@ package xpop.canvas.tool
 			brushTool.init( _config );
 			eraserTool = new EraserTool;
 			eraserTool.init( _config );
+			handTool = new HandTool;
+			handTool.init( _config );
 			_config.currentTool = brushTool;
 		}
 	}

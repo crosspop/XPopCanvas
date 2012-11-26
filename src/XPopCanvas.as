@@ -1,6 +1,7 @@
 package
 {
 	import alternativa.gui.layout.LayoutManager;
+	import alternativa.gui.theme.defaulttheme.container.panel.Panel;
 	import alternativa.init.GUI;
 	
 	import flash.display.Sprite;
@@ -42,6 +43,11 @@ package
 			tools.init( config );
 			drawableSpace.init( config );
 			uiSpace.init( config );
+		}
+		public function openWindow( window:Panel ):void
+		{
+			if( uiSpace.contains( window ) != true )
+				uiSpace.addChild( window );
 		}
 	}
 }

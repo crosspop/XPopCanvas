@@ -15,8 +15,8 @@ package xpop.canvas.ui.menubar
 			_config = config;
 			addItem( { label:"ToolBox", onSelect:function():void
 			{
-				_config.windows.toolBoxWindow.visible = true;
+				_config.app.openWindow( _config.windows.toolBoxWindow );
 			} } );
-		}
+		} 
 	}
 }

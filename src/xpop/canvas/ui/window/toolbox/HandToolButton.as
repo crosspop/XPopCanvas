@@ -6,22 +6,22 @@ package xpop.canvas.ui.window.toolbox
 	
 	import xpop.canvas.Config;
 	
-	public class BrushToolButton extends ToggleButton
+	public class HandToolButton extends ToggleButton
 	{
 		public var _config:Config;
-		public function BrushToolButton()
+		public function HandToolButton()
 		{
 		}
 		public function init( config:Config ):void
 		{
 			_config = config;
-			label = "Brush";
+			label = "Hand";
 			mouseEnabled = true;
 			addEventListener( MouseEvent.MOUSE_DOWN, MOUSE_DOWN );
 		}
 		private function MOUSE_DOWN( e:MouseEvent ):void
 		{
-			_config.currentTool = _config.app.tools.brushTool;
+			_config.currentTool = _config.app.tools.handTool;
 		}
 	}
 }

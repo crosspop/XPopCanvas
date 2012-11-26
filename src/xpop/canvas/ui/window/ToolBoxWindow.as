@@ -10,6 +10,7 @@ package xpop.canvas.ui.window
 	import xpop.canvas.Config;
 	import xpop.canvas.ui.window.toolbox.BrushToolButton;
 	import xpop.canvas.ui.window.toolbox.EraserToolButton;
+	import xpop.canvas.ui.window.toolbox.HandToolButton;
 	
 	public class ToolBoxWindow extends Panel
 	{
@@ -17,6 +18,7 @@ package xpop.canvas.ui.window
 		public var buttonGroup:RadioButtonGroup;
 		public var brushToolButton:BrushToolButton;
 		public var eraserToolButton:EraserToolButton;
+		public var handToolButton:HandToolButton;
 		public function ToolBoxWindow()
 		{
 		}
@@ -40,12 +42,16 @@ package xpop.canvas.ui.window
 			eraserToolButton.init( _config );
 			buttonGroup.addButton( eraserToolButton );
 			box.addChild( eraserToolButton );
+			handToolButton = new HandToolButton;
+			handToolButton.init( _config );
+			buttonGroup.addButton( handToolButton );
+			box.addChild( handToolButton );
 			brushToolButton.selected = true;
 			content = box;
 		}
 		private function CLOSE( e:PanelEvent ):void
 		{
-			this.visible = false;
+			parent.removeChild( this );
 		}
 	}
 }
